@@ -1,0 +1,945 @@
+/**
+ * SSF Home · Design System Foundation
+ * Basis-Styles auf Token-Basis (siehe ssf-tokens.css).
+ * Geist als einzige Schriftfamilie, Intranet-fokussiert.
+ */
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--black);
+  font-family: var(--primary-font);
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1.5;
+  text-rendering: optimizelegibility;
+}
+
+.o-container {
+  margin: 0 auto;
+  max-width: var(--container-max-width);
+  padding: 0 var(--container-padding);
+}
+
+.o-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.o-col {
+  flex: 1 0 0%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.ds-grid-2 {
+  display: grid;
+  gap: var(--gutter);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .ds-grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.o-h1,
+.o-h2,
+.o-h3,
+.o-h4,
+.o-h6,
+.card-title-h5 {
+  font-family: var(--primary-font);
+  margin: 0 0 0.6em;
+}
+
+.o-h1 {
+  font-size: 4.8rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.o-h2 {
+  font-size: 3.2rem;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.o-h3 {
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.o-h4 {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* Karten-/Teaser-Titel (Card-Heading), separat von .o-h5 */
+.card-title-h5 {
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.o-text-large {
+  font-family: var(--primary-font);
+  font-size: var(--text-large-size);
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: 0.018rem;
+  line-height: var(--text-large-line-height);
+  margin: 0 0 1em;
+}
+
+@media (min-width: 1024px) {
+  /* Intranet: moderate Skalierung — keine Display-Sprünge wie auf Marketing-Seiten.
+   * Stufen folgen der Vorgabe aus SSF-Home-Input.pdf. */
+  .o-h1 {
+    font-size: 5.6rem; /* ≈56px */
+  }
+
+  .o-h2 {
+    font-size: 4rem; /* ≈40px */
+  }
+
+  .o-h3 {
+    font-size: 2.8rem; /* ≈28px */
+  }
+
+  .o-h4 {
+    font-size: 2.3rem; /* ≈23px */
+  }
+
+  .card-title-h5 {
+    font-size: 2.8rem; /* ≈28px */
+  }
+
+  .o-text-large {
+    letter-spacing: 0.024rem;
+  }
+}
+
+.c-btn {
+  background-color: transparent;
+  border: 0.1rem solid var(--black);
+  border-radius: var(--radius-card);
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+  padding: 1rem 4.9rem;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: all 0.35s ease-in-out;
+  user-select: none;
+  vertical-align: middle;
+  white-space: normal;
+}
+
+.c-btn:hover {
+  background-color: var(--accent-lime);
+  border-color: var(--accent-lime);
+}
+
+.c-btn_inner,
+.c-btn_inner span {
+  display: block;
+  position: relative;
+}
+
+.c-btn_inner span {
+  transition: transform 0.35s ease-in-out;
+}
+
+.c-btn_inner svg {
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate3d(1rem, -50%, 0);
+  transition: opacity 0.35s ease-in-out;
+}
+
+.c-btn:hover .c-btn_inner span {
+  transform: translateX(-1rem);
+}
+
+.c-btn:hover .c-btn_inner svg {
+  opacity: 1;
+}
+
+.c-btn.-white {
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.c-btn.-white:hover {
+  border-color: var(--accent-lime);
+  color: var(--black);
+}
+
+/* ——— Nur Foundation-Dokumentation (Hero, Section-Header etc.) ——— */
+
+.ds-page {
+  background: var(--white);
+  min-height: 100%;
+  padding-bottom: var(--component-space-bottom);
+}
+
+.ds-hero {
+  background: var(--blue-digital);
+  color: var(--white);
+  padding: var(--component-space-top) 0;
+}
+
+.ds-marke-examples {
+  display: grid;
+  gap: var(--spacer-24);
+  grid-template-columns: 1fr;
+  margin-top: var(--spacer-24);
+}
+
+.ds-marke-examples--logo-row {
+  align-items: stretch;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 600px) {
+  .ds-marke-examples--logo-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ds-marke-panel {
+  border-radius: var(--radius-card);
+  border: 0.1rem solid #00000014;
+  padding: var(--spacer-24);
+  text-align: center;
+}
+
+.ds-marke-panel--light {
+  background: var(--white);
+}
+
+.ds-marke-panel--dark {
+  background: var(--black);
+  border-color: #ffffff1a;
+}
+
+.ds-marke-panel-label {
+  font-family: var(--primary-font);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  margin: 0 0 var(--spacer-16);
+  text-transform: uppercase;
+}
+
+.ds-marke-panel--dark .ds-marke-panel-label {
+  color: #ffffff99;
+}
+
+.ds-marke-schutzzone-outer {
+  box-sizing: content-box;
+  display: inline-block;
+  margin: 0 auto var(--spacer-16);
+  max-width: 100%;
+  padding: var(--ssf-logo-schutzzone);
+  position: relative;
+  vertical-align: top;
+}
+
+/* Schutzzone nur angedeutet: kleine „angerissene“ Eckhaken li oben & re unten (gestrichelt) */
+.ds-marke-schutzzone-outer::before,
+.ds-marke-schutzzone-outer::after {
+  box-sizing: border-box;
+  content: "";
+  height: 1.2rem;
+  pointer-events: none;
+  position: absolute;
+  width: 1.2rem;
+}
+
+.ds-marke-schutzzone-outer::before {
+  border-left: 0.12rem dashed var(--blue-digital);
+  border-top: 0.12rem dashed var(--blue-digital);
+  left: 0;
+  top: 0;
+}
+
+.ds-marke-schutzzone-outer::after {
+  border-bottom: 0.12rem dashed var(--blue-digital);
+  border-right: 0.12rem dashed var(--blue-digital);
+  bottom: 0;
+  right: 0;
+}
+
+.ds-marke-schutzzone-outer--dark::before {
+  border-left-color: #ffffff99;
+  border-top-color: #ffffff99;
+}
+
+.ds-marke-schutzzone-outer--dark::after {
+  border-bottom-color: #ffffff99;
+  border-right-color: #ffffff99;
+}
+
+.ds-marke-logo-img {
+  background: var(--white);
+  display: block;
+  height: var(--ssf-logo-show-height);
+  margin: 0 auto;
+  width: auto;
+}
+
+/* Schwarz nur hinter dem Bild, nicht am img – sonst wirkt filter auf die Fläche mit */
+.ds-marke-logo-on-dark {
+  background: var(--black);
+  display: inline-block;
+  line-height: 0;
+  vertical-align: top;
+}
+
+.ds-marke-logo-img--on-dark {
+  background: transparent;
+  -webkit-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
+}
+
+.ds-marke-panel-path {
+  font-size: 1.3rem;
+  margin: 0;
+  text-align: left;
+}
+
+.ds-marke-panel-path--on-dark {
+  color: #ffffffbf;
+}
+
+.ds-marke-panel--light .ds-marke-panel-path {
+  color: var(--text-muted);
+}
+
+.ds-section {
+  padding-top: var(--component-space-top);
+}
+
+.ds-section-title {
+  color: var(--grey-dark);
+  font-family: var(--primary-font);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  margin: 0 0 var(--spacer-24);
+  text-transform: uppercase;
+}
+
+/* Farbkacheln: höchstens ⅓ der Zeilenbreite (inkl. Neutral-Raster) */
+.ds-swatch-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacer-24);
+}
+
+.ds-color-intro {
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin: 0 0 var(--spacer-24);
+  max-width: 72rem;
+}
+
+.ds-palette-group {
+  margin-bottom: var(--component-space-top);
+}
+
+.ds-palette-group:last-of-type {
+  margin-bottom: 0;
+}
+
+.ds-palette-label {
+  color: var(--grey-dark);
+  font-family: var(--primary-font);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin: 0 0 var(--spacer-16);
+  text-transform: uppercase;
+}
+
+.ds-palette-label small {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-top: 0.4rem;
+  opacity: 0.75;
+  text-transform: none;
+}
+
+.ds-palette-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacer-24);
+}
+
+.ds-palette-row .ds-swatch,
+.ds-swatch-grid .ds-swatch {
+  flex: 0 1 calc((100% - 2 * var(--spacer-24)) / 3);
+  max-width: calc((100% - 2 * var(--spacer-24)) / 3);
+  min-width: 0;
+}
+
+.ds-swatch {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  border: 0.1rem solid #00000014;
+}
+
+.ds-swatch_color {
+  aspect-ratio: 1.4;
+  width: 100%;
+}
+
+/* 10 %-Deckkraft: wirkt auf hellem Seitengrund; feine Kante für Abgrenzung */
+.ds-swatch_color--alpha {
+  box-shadow: inset 0 0 0 1px #0000000f;
+}
+
+.ds-swatch_meta {
+  background: var(--light);
+  font-size: 1.3rem;
+  line-height: 1.4;
+  padding: 1.2rem 1.4rem;
+}
+
+.ds-swatch_meta code {
+  display: block;
+  font-family: ui-monospace, monospace;
+  font-size: 1.1rem;
+  margin-top: 0.4rem;
+  opacity: 0.85;
+  word-break: break-all;
+}
+
+.ds-gradient-bar {
+  border-radius: 1px;
+  height: 5px;
+  margin-top: var(--spacer-16);
+  width: 100%;
+}
+
+/* Demo-Hintergrund für .c-btn.-white (z. B. Hero / UI auf Digital Blue) */
+.ds-dark-panel {
+  background: var(--blue-digital);
+  border-radius: var(--radius-card);
+  margin-top: var(--spacer-24);
+  padding: var(--spacer-24);
+}
+
+.ds-spacing-demo {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacer-24);
+  margin-top: var(--spacer-16);
+}
+
+.ds-spacing-item {
+  text-align: center;
+}
+
+.ds-spacing-item span {
+  display: block;
+  font-size: 1.2rem;
+  margin-top: 0.6rem;
+  opacity: 0.7;
+}
+
+.ds-spacing-bar {
+  background: var(--gradient-horizontal);
+  border-radius: 0.4rem;
+  margin: 0 auto;
+}
+
+.ds-typo-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-24);
+  margin-top: var(--spacer-24);
+}
+
+.ds-typo-sample-preview {
+  background: var(--white);
+  padding: var(--spacer-24);
+}
+
+.ds-typo-sample-preview > * {
+  margin: 0;
+}
+
+.ds-typo-sample-caption {
+  color: var(--text-muted);
+  font-family: var(--primary-font);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+.ds-typo-sample-caption code {
+  font-family: ui-monospace, monospace;
+  font-size: 1.05rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Demo: Umbruch bei halber Content-Breite des Musters (Text large / Body) */
+.ds-typo-text-large-measure,
+.ds-typo-body-measure {
+  max-width: 50%;
+}
+
+.ds-typo-body-sample {
+  color: var(--black);
+  font-family: var(--primary-font);
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.ds-muted {
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.ds-comp-subtitle {
+  margin: var(--component-space-top) 0 var(--spacer-16);
+}
+
+.ds-comp-subtitle:first-child {
+  margin-top: 0;
+}
+
+.ds-comp-note {
+  font-size: 1.3rem;
+  margin: var(--spacer-16) 0 0;
+  max-width: 72rem;
+}
+
+/* ===========================================================
+ * On-Page-Navigation
+ * Sticky horizontal Bar direkt unter dem Hero — bleibt beim
+ * Scrollen sichtbar und enthält Sprungmarken zu allen Sektionen.
+ * ========================================================= */
+
+.ds-onpage-nav {
+  background: var(--white);
+  border-bottom: 0.1rem solid #00000014;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.ds-onpage-nav__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacer-8) var(--spacer-24);
+  padding: var(--spacer-16) 0;
+}
+
+.ds-onpage-nav__link {
+  color: var(--text-muted);
+  font-family: var(--primary-font);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.ds-onpage-nav__link:hover,
+.ds-onpage-nav__link:focus-visible {
+  color: var(--blue-digital);
+}
+
+.ds-onpage-nav__link:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* ===========================================================
+ * Typo-Stufen H5 + H6 sowie Body-small, Caption, Footnote,
+ * Blockquote, Inline-Link. Alle in Geist, gewichts-gestufte
+ * Hierarchie ergänzend zu H1–H4.
+ * ========================================================= */
+
+.o-h5,
+.o-h6 {
+  font-family: var(--primary-font);
+  margin: 0 0 0.6em;
+}
+
+.o-h5 {
+  font-size: var(--typo-h5-size);
+  font-weight: var(--typo-h5-weight);
+  letter-spacing: var(--typo-h5-letter-spacing);
+  line-height: var(--typo-h5-line-height);
+}
+
+.o-h6 {
+  font-size: var(--typo-h6-size);
+  font-weight: var(--typo-h6-weight);
+  letter-spacing: var(--typo-h6-letter-spacing);
+  line-height: var(--typo-h6-line-height);
+}
+
+.o-body-small {
+  font-family: var(--primary-font);
+  font-size: var(--typo-body-small-size);
+  font-weight: var(--typo-body-small-weight);
+  line-height: var(--typo-body-small-line-height);
+  margin: 0 0 1em;
+}
+
+.o-caption {
+  color: var(--typo-caption-color);
+  font-family: var(--primary-font);
+  font-size: var(--typo-caption-size);
+  font-weight: var(--typo-caption-weight);
+  letter-spacing: var(--typo-caption-letter-spacing);
+  line-height: var(--typo-caption-line-height);
+  margin: 0 0 0.6em;
+}
+
+.o-footnote {
+  color: var(--typo-footnote-color);
+  font-family: var(--primary-font);
+  font-size: var(--typo-footnote-size);
+  font-weight: var(--typo-footnote-weight);
+  letter-spacing: var(--typo-footnote-letter-spacing);
+  line-height: var(--typo-footnote-line-height);
+  margin: 0 0 0.6em;
+  text-transform: uppercase;
+}
+
+.o-blockquote {
+  border-left: 0.2rem solid var(--blue-digital);
+  font-family: var(--primary-font);
+  font-size: var(--typo-blockquote-size);
+  font-weight: var(--typo-blockquote-weight);
+  line-height: var(--typo-blockquote-line-height);
+  margin: 0 0 1em;
+  padding: 0 0 0 var(--spacer-16);
+}
+
+.o-link {
+  color: var(--link-color);
+  font-weight: var(--link-weight);
+  text-decoration: none;
+  text-underline-offset: var(--link-underline-offset);
+}
+
+.o-link:hover {
+  text-decoration: underline;
+}
+
+.o-link:focus-visible {
+  border-radius: 0.2rem;
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* ===========================================================
+ * States: Focus-Ring, Disabled, Semantische Farben (Error/Success)
+ * ========================================================= */
+
+.ds-state-grid {
+  display: grid;
+  gap: var(--spacer-24);
+  grid-template-columns: 1fr;
+  margin-top: var(--spacer-24);
+}
+
+@media (min-width: 768px) {
+  .ds-state-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .ds-state-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.ds-state-card {
+  background: var(--white);
+  border: 0.1rem solid #00000014;
+  border-radius: var(--radius-card);
+  padding: var(--spacer-24);
+}
+
+.ds-state-card__label {
+  color: var(--text-muted);
+  font-family: var(--primary-font);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin: 0 0 var(--spacer-16);
+  text-transform: uppercase;
+}
+
+.ds-state-card code {
+  font-size: 1.1rem;
+}
+
+.ds-focus-target {
+  background: var(--white);
+  border: var(--input-border-width) solid var(--input-border-color);
+  border-radius: var(--input-radius);
+  color: var(--input-color);
+  font-family: var(--primary-font);
+  font-size: var(--input-font-size);
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
+
+.ds-focus-target:focus-visible {
+  border-color: var(--input-border-color-focus);
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.ds-disabled-demo {
+  opacity: var(--state-disabled-opacity);
+  pointer-events: none;
+}
+
+.ds-state-banner {
+  border-radius: var(--input-radius);
+  font-family: var(--primary-font);
+  font-size: var(--typo-body-small-size);
+  line-height: var(--typo-body-small-line-height);
+  padding: var(--spacer-8) var(--spacer-16);
+}
+
+.ds-state-banner--error {
+  background: var(--color-error-bg);
+  color: var(--color-error);
+}
+
+.ds-state-banner--success {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.ds-state-banner--info {
+  background: var(--color-info-bg);
+  color: var(--color-info);
+}
+
+/* ===========================================================
+ * Form-Tokens-Demo: Input, Label, Helper-Text, Error-State
+ * ========================================================= */
+
+.ds-form-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-16);
+  margin-top: var(--spacer-24);
+  max-width: 48rem;
+}
+
+.ds-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-4);
+}
+
+.ds-field__label {
+  font-family: var(--primary-font);
+  font-size: var(--typo-body-small-size);
+  font-weight: 500;
+  line-height: var(--typo-body-small-line-height);
+}
+
+.ds-field__input {
+  background: var(--input-bg);
+  border: var(--input-border-width) solid var(--input-border-color);
+  border-radius: var(--input-radius);
+  color: var(--input-color);
+  font-family: var(--primary-font);
+  font-size: var(--input-font-size);
+  height: var(--input-height);
+  padding: 0 var(--input-padding-x);
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+.ds-field__input::placeholder {
+  color: var(--input-placeholder);
+}
+
+.ds-field__input:focus-visible {
+  border-color: var(--input-border-color-focus);
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.ds-field__input[disabled] {
+  opacity: var(--state-disabled-opacity);
+}
+
+.ds-field__input--error {
+  border-color: var(--color-error);
+}
+
+.ds-field__textarea {
+  height: auto;
+  min-height: 8rem;
+  padding: var(--input-padding-y) var(--input-padding-x);
+  resize: vertical;
+}
+
+.ds-field__helper {
+  color: var(--text-muted);
+  font-family: var(--primary-font);
+  font-size: var(--typo-caption-size);
+  letter-spacing: var(--typo-caption-letter-spacing);
+  line-height: var(--typo-caption-line-height);
+}
+
+.ds-field__helper--error {
+  color: var(--color-error);
+}
+
+/* ===========================================================
+ * Tag / Badge
+ * ========================================================= */
+
+.ds-tag {
+  background: var(--tag-bg-default);
+  border-radius: var(--tag-radius);
+  color: var(--tag-color-default);
+  display: inline-flex;
+  font-family: var(--primary-font);
+  font-size: var(--tag-font-size);
+  font-weight: var(--tag-font-weight);
+  letter-spacing: var(--tag-letter-spacing);
+  line-height: 1;
+  padding: var(--tag-padding-y) var(--tag-padding-x);
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.ds-tag--neutral {
+  background: var(--tag-bg-neutral);
+  color: var(--tag-color-neutral);
+}
+
+.ds-tag--success {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.ds-tag--warning {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.ds-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacer-8);
+  margin-top: var(--spacer-16);
+}
+
+/* ===========================================================
+ * Avatar
+ * ========================================================= */
+
+.ds-avatar {
+  background: var(--light);
+  border: var(--avatar-border);
+  border-radius: var(--avatar-radius);
+  display: inline-block;
+  overflow: hidden;
+}
+
+.ds-avatar--sm {
+  height: var(--avatar-size-sm);
+  width: var(--avatar-size-sm);
+}
+
+.ds-avatar--md {
+  height: var(--avatar-size-md);
+  width: var(--avatar-size-md);
+}
+
+.ds-avatar--lg {
+  height: var(--avatar-size-lg);
+  width: var(--avatar-size-lg);
+}
+
+.ds-avatar img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.ds-avatar-row {
+  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacer-24);
+  margin-top: var(--spacer-24);
+}
+
+.ds-avatar-item {
+  text-align: center;
+}
+
+.ds-avatar-item__label {
+  color: var(--text-muted);
+  display: block;
+  font-family: var(--primary-font);
+  font-size: 1.2rem;
+  margin-top: var(--spacer-8);
+}
+
+/* ===========================================================
+ * Spacing-Demo: kleine Erweiterung um neue Tokens
+ * ========================================================= */
+
+.ds-spacing-item--xs {
+  /* visuelles Minimum bei sehr kleinen Werten */
+  min-width: 2rem;
+}

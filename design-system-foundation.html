@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SSF Home · Design System Foundation</title>
+    <link rel="icon" href="assets/logo/ssf-logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="ssf-tokens.css" />
+    <link rel="stylesheet" href="ssf-foundation.css" />
+  </head>
+  <body class="ds-page">
+    <header class="ds-hero">
+      <div class="o-container">
+        <p class="ds-section-title" style="color: #ffffff99">
+          SSF Home
+        </p>
+        <h1 class="o-h1" style="color: var(--white)">Design System Foundation</h1>
+        <p class="o-text-large" style="color: #ffffffe6; max-width: 72rem">
+          Foundation für das SSF Intranet: Farben, Typografie, Abstände, States und primäre
+          UI-Bausteine. Schrift: <strong>Geist</strong> in allen Hierarchien. Schriften liegen unter
+          <code style="opacity: 0.8">assets/font/</code> und werden über
+          <code style="opacity: 0.8">ssf-tokens.css</code> eingebunden. Größen in
+          <code style="opacity: 0.8">rem</code> beziehen sich auf
+          <code style="opacity: 0.8">&lt;html&gt;</code> (siehe Abschnitt Typografie); daneben sind px
+          als Referenz bei 16&nbsp;px Browser-Standard notiert.
+        </p>
+      </div>
+    </header>
+
+    <nav class="ds-onpage-nav" aria-label="Inhaltsverzeichnis">
+      <div class="o-container ds-onpage-nav__inner">
+        <a class="ds-onpage-nav__link" href="#sec-marke">Marke</a>
+        <a class="ds-onpage-nav__link" href="#sec-colors">Farben</a>
+        <a class="ds-onpage-nav__link" href="#sec-type">Typografie</a>
+        <a class="ds-onpage-nav__link" href="#sec-space">Abstände</a>
+        <a class="ds-onpage-nav__link" href="#sec-states">States</a>
+        <a class="ds-onpage-nav__link" href="#sec-uitokens">UI-Tokens</a>
+        <a class="ds-onpage-nav__link" href="#sec-buttons">Buttons</a>
+        <a class="ds-onpage-nav__link" href="#sec-o-layout">Layout</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="ds-section o-container" aria-labelledby="sec-marke">
+        <h2 id="sec-marke" class="ds-section-title">Marke · Logo</h2>
+        <p class="ds-color-intro">
+          Das Logo liegt im Repo als
+          <code>assets/logo/ssf-logo.svg</code> (relativer Pfad zu dieser HTML-Datei), Füllfarbe
+          <code>--blue-classic</code> (#00a2ef). <strong>SVG</strong> für Git, GitHub und GitHub
+          Pages; Favicon der Seite nutzt dieselbe Datei.
+        </p>
+        <p class="ds-color-intro" style="margin-top: calc(var(--spacer-16) * -1)">
+          <strong>Schutzzone:</strong> umlaufend <strong>eine Modulhöhe</strong> – das ist die
+          <strong>reine Höhe der sechs Grafikelemente</strong> (ohne Wortmarke), bezogen auf das
+          ViewBox-Maß der SVG. Token:
+          <code>--ssf-logo-schutzzone</code> =
+          <code>--ssf-logo-show-height</code> ×
+          <code>--ssf-logo-symbol-height</code> /
+          <code>--ssf-logo-viewbox-height</code> (bei 75&nbsp;px Gesamthöhe des Lockups). Hier in der
+          Foundation markieren kleine gestrichelte Eckhaken (li.&nbsp;oben, re.&nbsp;unten) den
+          Freiraum; nichts Wichtiges darf in diesen Bereich.
+        </p>
+        <div class="ds-marke-examples ds-marke-examples--logo-row">
+          <div class="ds-marke-panel ds-marke-panel--light">
+            <p class="ds-marke-panel-label">Logo in Classic Blue</p>
+            <div class="ds-marke-schutzzone-outer">
+              <img
+                src="assets/logo/ssf-logo.svg"
+                alt=""
+                class="ds-marke-logo-img"
+                decoding="async"
+              />
+            </div>
+            <p class="ds-muted ds-marke-panel-path">
+              Positiv: Füllung <code>--blue-classic</code> (#00a2ef), Fläche <code>--white</code> ·
+              Lockup <strong>75&nbsp;px</strong> hoch (<code>--ssf-logo-show-height</code>).
+            </p>
+          </div>
+          <div class="ds-marke-panel ds-marke-panel--dark">
+            <p class="ds-marke-panel-label">Logo in Negativ</p>
+            <div class="ds-marke-schutzzone-outer ds-marke-schutzzone-outer--dark">
+              <div class="ds-marke-logo-on-dark">
+                <img
+                  src="assets/logo/ssf-logo.svg"
+                  alt=""
+                  class="ds-marke-logo-img ds-marke-logo-img--on-dark"
+                  decoding="async"
+                />
+              </div>
+            </div>
+            <p class="ds-marke-panel-path ds-marke-panel-path--on-dark">
+              Negativ: helle Figur auf <code>--black</code> (hier per <code>filter</code> aus der
+              Classic-Blue-Datei); Schutzzone wie links.
+            </p>
+          </div>
+        </div>
+        <p class="ds-muted" style="margin-top: var(--spacer-24); margin-bottom: 0">
+          <strong>Hover / UI:</strong> Für interaktive Zustände gilt <code>--accent-lime</code> für
+          Buttons – das Logo nicht beliebig einfärben, außer in dokumentierten Ausnahmen.
+        </p>
+      </section>
+
+      <section class="ds-section o-container" aria-labelledby="sec-colors">
+        <h2 id="sec-colors" class="ds-section-title">Farben</h2>
+        <p class="ds-color-intro">
+          Gewichtung für die Markenpalette: <strong>Primär</strong> ist
+          <code>--blue-digital</code> mit <code>--blue-digital-hell</code> direkt daneben. Daran
+          anschließend die Familien <strong>Grün</strong>, <strong>Orange</strong> und
+          <strong>Blau-Classic</strong> – jeweils mit der zugehörigen
+          <code>-hell</code>-Abstufung sowie eine dritte Kachel mit der jeweiligen Vollfarbe bei
+          <strong>10&nbsp;% Deckkraft</strong> (<code>*-alpha-10</code>).
+          <code>--accent-lime</code> ist bewusst sparsam einzusetzen
+          (u. a. kleine Akzente, Markenverlauf, Hover auf Links/Buttons).
+        </p>
+
+        <div class="ds-palette-group">
+          <h3 class="ds-palette-label">
+            Primär · Digital
+            <small>
+              <code>--blue-digital-hell</code> gehört direkt neben <code>--blue-digital</code>.
+            </small>
+          </h3>
+          <div class="ds-palette-row">
+            <div class="ds-swatch">
+              <div class="ds-swatch_color" style="background: var(--blue-digital)"></div>
+              <div class="ds-swatch_meta">
+                blue-digital <code>--blue-digital · #041cf6</code>
+              </div>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch_color" style="background: var(--blue-digital-hell)"></div>
+              <div class="ds-swatch_meta">
+                blue-digital-hell <code>--blue-digital-hell · #d1d8ff</code>
+              </div>
+            </div>
+            <div class="ds-swatch">
+              <div
+                class="ds-swatch_color ds-swatch_color--alpha"
+                style="background: var(--blue-digital-alpha-10)"
+              ></div>
+              <div class="ds-swatch_meta">
+                blue-digital-alpha-10
+                <code>--blue-digital-alpha-10 · #041cf61a</code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-palette-group">
+          <h3 class="ds-palette-label">Grün</h3>
+          <div class="ds-palette-row">
+            <div class="ds-swatch">
+              <div class="ds-swatch_color" style="background: var(--green)"></div>
+              <div class="ds-swatch_meta">green <code>--green · #00c98d</code></div>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch_color" style="background: var(--green-hell)"></div>
+              <div class="ds-swatch_meta">green-hell <code>--green-hell · #e5fff7</code></div>
+            </div>
+            <div class="ds-swatch">
+              <div
+                class="ds-swatch_color ds-swatch_color--alpha"
+                style="background: var(--green-alpha-10)"
+              ></div>
+              <div class="ds-swatch_meta">
+                green-alpha-10 <code>--green-alpha-10 · #00c98d1a</code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-palette-group">
+          <h3 class="ds-palette-label">Orange</h3>
+          <div class="ds-palette-row">
+            <div class="ds-swatch">
+              <div class="ds-swatch_color" style="background: var(--orange)"></div>
+              <div class="ds-swatch_meta">orange <code>--orange · #e1630b</code></div>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch_color" style="background: var(--orange-hell)"></div>
+              <div class="ds-swatch_meta">orange-hell <code>--orange-hell · #fef3ec</code></div>
+            </div>
+            <div class="ds-swatch">
+              <div
+                class="ds-swatch_color ds-swatch_color--alpha"
+                style="background: var(--orange-alpha-10)"
+              ></div>
+              <div class="ds-swatch_meta">
+                orange-alpha-10 <code>--orange-alpha-10 · #e1630b1a</code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-palette-group">
+          <h3 class="ds-palette-label">Blau Classic</h3>
+          <div class="ds-palette-row">
+            <div class="ds-swatch">
+              <div class="ds-swatch_color" style="background: var(--blue-classic)"></div>
+              <div class="ds-swatch_meta">
+                blue-classic <code>--blue-classic · #00a2ef</code>
+              </div>
+            </div>
+            <div class="ds-swatch">
+              <div
+                class="ds-swatch_color"
+                style="background: var(--blue-classic-hell); border: 1px solid #eee"
+              ></div>
+              <div class="ds-swatch_meta">
+                blue-classic-hell <code>--blue-classic-hell · #00a2ef0d</code>
+              </div>
+            </div>
+            <div class="ds-swatch">
+              <div
+                class="ds-swatch_color ds-swatch_color--alpha"
+                style="background: var(--blue-classic-alpha-10)"
+              ></div>
+              <div class="ds-swatch_meta">
+                blue-classic-alpha-10
+                <code>--blue-classic-alpha-10 · #00a2ef1a</code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-palette-group">
+          <h3 class="ds-palette-label">
+            Accent lime
+            <small>
+              Sparsam nutzen; u. a. Start des Markenverlaufs und Hover-Füllung bei
+              <code>.c-btn</code> – keine großflächige Primärfarbe.
+            </small>
+          </h3>
+          <div class="ds-palette-row">
+            <div class="ds-swatch">
+              <div class="ds-swatch_color" style="background: var(--accent-lime)"></div>
+              <div class="ds-swatch_meta">
+                accent-lime <code>--accent-lime · #80fc04</code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-palette-group">
+          <h3 class="ds-palette-label">Verlauf</h3>
+          <p class="ds-muted" style="margin-bottom: var(--spacer-16); max-width: 72rem">
+            Der horizontale Markenverlauf ist nur als Ganzes definiert
+            (<code>--gradient-horizontal</code>): von <code>--accent-lime</code> zu einem kräftigen
+            Blau (<strong>#0098db</strong>). Dieses Blau gibt es <strong>nicht</strong> als eigene
+            Palettenfarbe oder Token – es kommt ausschließlich als Verlauf-Ende vor.
+          </p>
+          <div class="ds-gradient-bar" style="background: var(--gradient-horizontal)"></div>
+          <p class="ds-muted" style="margin-top: var(--spacer-16); margin-bottom: 0; font-size: 1.3rem">
+            Token: <code>--gradient-horizontal</code>
+          </p>
+        </div>
+
+        <div class="ds-palette-group">
+          <h3 class="ds-palette-label">Neutral</h3>
+          <div class="ds-swatch-grid">
+            <div class="ds-swatch">
+              <div class="ds-swatch_color" style="background: var(--black)"></div>
+              <div class="ds-swatch_meta">black <code>--black</code></div>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch_color" style="background: var(--white); border: 1px solid #ddd"></div>
+              <div class="ds-swatch_meta">white <code>--white</code></div>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch_color" style="background: var(--light)"></div>
+              <div class="ds-swatch_meta">light <code>--light · #f5f5f5</code></div>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch_color" style="background: var(--grey)"></div>
+              <div class="ds-swatch_meta">grey <code>--grey · #c3c3c3</code></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ds-section o-container" aria-labelledby="sec-type">
+        <h2 id="sec-type" class="ds-section-title">Typografie</h2>
+        <p class="ds-color-intro">
+          Eine Schriftfamilie für das ganze Intranet: <strong>Geist</strong>. Hierarchie über
+          Gewicht und Größe — Display (H1) in SemiBold, Strukturheadings (H2–H6) in Medium,
+          Fließtext in Light. <strong><code>rem</code></strong> bezieht sich auf die Schriftgröße
+          des Root-Elements <code>&lt;html&gt;</code> (in <code>ssf-foundation.css</code>:
+          <code>html { font-size: 62.5% }</code> — 62,5&nbsp;% der vom Browser vorgegebenen
+          Standardschrift, üblicherweise 16&nbsp;px). Dann ist die berechnete Größe von
+          <code>&lt;html&gt;</code> typisch <strong>10&nbsp;px</strong> und es gilt
+          <strong>1&nbsp;rem ≈ 10&nbsp;px</strong>. Die <strong>px in Klammern</strong> in den
+          Monospace-Zeilen unten sind daraus abgeleitete <strong>Referenzwerte bei diesem Standard</strong>;
+          wenn Nutzer:innen die Browser-Basis ändern, skalieren <code>rem</code>-Angaben mit.
+          <code>.card-title-h5</code> ist kein semantisches H5, sondern der Stil für Karten-Titel
+          (eigene Größe, abweichend von <code>.o-h5</code>).
+        </p>
+        <div class="ds-typo-grid">
+          <div class="ds-typo-sample ds-swatch">
+            <div class="ds-typo-sample-preview">
+              <div class="o-h1">Überschrift Ebene 1</div>
+            </div>
+            <div class="ds-swatch_meta">
+              .o-h1
+              <code>Geist · 600 · 4.8rem (≈48px) / lh 1.15 · @1024px: 5.6rem (≈56px)</code>
+            </div>
+          </div>
+          <div class="ds-typo-sample ds-swatch">
+            <div class="ds-typo-sample-preview">
+              <div class="o-h2">Überschrift Ebene 2</div>
+            </div>
+            <div class="ds-swatch_meta">
+              .o-h2
+              <code>Geist · 500 · 3.2rem (≈32px) / lh 1.15 · @1024px: 4rem (≈40px)</code>
+            </div>
+          </div>
+          <div class="ds-typo-sample ds-swatch">
+            <div class="ds-typo-sample-preview">
+              <div class="o-h3">Überschrift Ebene 3</div>
+            </div>
+            <div class="ds-swatch_meta">
+              .o-h3
+              <code>Geist · 500 · 2.4rem (≈24px) / lh 1.2 · @1024px: 2.8rem (≈28px)</code>
+            </div>
+          </div>
+          <div class="ds-typo-sample ds-swatch">
+            <div class="ds-typo-sample-preview">
+              <div class="o-h4">Überschrift Ebene 4</div>
+            </div>
+            <div class="ds-swatch_meta">
+              .o-h4
+              <code>Geist · 500 · 2rem (≈20px) / lh 1.3 · @1024px: 2.3rem (≈23px)</code>
+            </div>
+          </div>
+          <div class="ds-typo-sample ds-swatch">
+            <div class="ds-typo-sample-preview">
+              <div class="card-title-h5">Card-Titel</div>
+            </div>
+            <div class="ds-swatch_meta">
+              .card-title-h5
+              <code>Geist · 500 · 2.4rem (≈24px) / lh 1.2 · @1024px: 2.8rem (≈28px)</code>
+            </div>
+          </div>
+          <div class="ds-typo-sample ds-swatch">
+            <div class="ds-typo-sample-preview">
+              <div class="ds-typo-text-large-measure">
+                <p class="ds-typo-sample-caption">Text large · Klasse <code>.o-text-large</code></p>
+                <p class="o-text-large">
+                  Anspruch, Leistung und Qualität im Bauingenieurwesen: Das ist SSF Ingenieure – seit
+                  über 50 Jahren.
+                </p>
+                <p class="o-text-large">
+                  Mit dem Mut für besondere Ideen, mit Kompetenz und Verantwortungsbewusstsein
+                  realisieren wir komplexe, herausfordernde Projekte. Dabei setzen wir auf den Menschen.
+                  Er steht immer im Fokus unseres Tuns, egal ob als Auftraggeber:in, Partner:in oder
+                  Teammitglied. Wir wissen: Im Miteinander liegt die Kraft unserer Arbeit.
+                </p>
+              </div>
+            </div>
+            <div class="ds-swatch_meta">
+              .o-text-large
+              <code
+                >Geist · 300 · Token --text-large-size / --text-large-line-height: 1.8rem / 2.7rem
+                (≈18px / 27px) → @1024px: 2.4rem / 3.6rem (≈24px / 36px) · ls 0.018rem → 0.024rem (≈0.18px
+                → 0.24px) · Demo: .ds-typo-text-large-measure max-width 50%</code
+              >
+            </div>
+          </div>
+          <div class="ds-typo-sample ds-swatch">
+            <div class="ds-typo-sample-preview">
+              <div class="ds-typo-body-measure">
+                <p class="ds-typo-sample-caption">Fließtext · <code>body</code> / <code>.ds-typo-body-sample</code></p>
+                <p class="ds-typo-body-sample">
+                  Unser Team ist unsere Erfolgsformel. Insgesamt rund 380 Expertinnen und Experten an
+                  sechs Standorten – das ist SSF Ingenieure. Vielfältig und engagiert, offen und
+                  vorausschauend, werteorientiert und kompetent. Werden Sie Teil unseres
+                  Erfolgsteams und bewerben Sie sich jetzt.
+                </p>
+              </div>
+            </div>
+            <div class="ds-swatch_meta">
+              body / Fließtext
+              <code
+                >Geist · 300 · 1.6rem / lh 1.5 (≈16px / Zeile 24px bei lh 1.5) · erbt von body · Demo:
+                .ds-typo-body-measure max-width 50%</code
+              >
+            </div>
+          </div>
+          <div class="ds-typo-sample ds-swatch">
+            <div class="ds-typo-sample-preview">
+              <div class="o-h5">Überschrift Ebene 5</div>
+            </div>
+            <div class="ds-swatch_meta">
+              .o-h5
+              <code>Geist · 500 · 1.9rem (≈19px) / lh 2.8rem (≈28px) · Token --typo-h5-*</code>
+            </div>
+          </div>
+          <div class="ds-typo-sample ds-swatch">
+            <div class="ds-typo-sample-preview">
+              <div class="o-h6">Überschrift Ebene 6</div>
+            </div>
+            <div class="ds-swatch_meta">
+              .o-h6
+              <code>Geist · 500 · 1.6rem (≈16px) / lh 2.4rem (≈24px) · Token --typo-h6-*</code>
+            </div>
+          </div>
+          <div class="ds-typo-sample ds-swatch">
+            <div class="ds-typo-sample-preview">
+              <div class="ds-typo-body-measure">
+                <p class="ds-typo-sample-caption">Body-small · <code>.o-body-small</code></p>
+                <p class="o-body-small" style="margin: 0">
+                  Für Meta-Lines, Form-Helper und dichte UI-Bereiche, in denen der Body
+                  (1.6rem) zu groß wirkt.
+                </p>
+              </div>
+            </div>
+            <div class="ds-swatch_meta">
+              .o-body-small
+              <code>Geist · 400 · 1.4rem (≈14px) / lh 2rem (≈20px) · Token --typo-body-small-*</code>
+            </div>
+          </div>
+          <div class="ds-typo-sample ds-swatch">
+            <div class="ds-typo-sample-preview">
+              <p class="ds-typo-sample-caption">Caption · <code>.o-caption</code></p>
+              <p class="o-caption" style="margin: 0">
+                Bildunterschrift, Helper-Text, kleine Beschriftung. Letter-Spacing 0,025rem für
+                feineres Schriftbild.
+              </p>
+            </div>
+            <div class="ds-swatch_meta">
+              .o-caption
+              <code
+                >Geist · 400 · 1.3rem (≈13px) / lh 2.4rem (≈24px) · ls 0.025rem · Farbe
+                --text-muted</code
+              >
+            </div>
+          </div>
+          <div class="ds-typo-sample ds-swatch">
+            <div class="ds-typo-sample-preview">
+              <p class="ds-typo-sample-caption">Footnote · <code>.o-footnote</code></p>
+              <p class="o-footnote" style="margin: 0">Eyebrow · Section-Divider</p>
+            </div>
+            <div class="ds-swatch_meta">
+              .o-footnote
+              <code
+                >Geist · 500 · 1.1rem (≈11px) / lh 2.4rem (≈24px) · ls 0.025rem · uppercase ·
+                Farbe --text-muted</code
+              >
+            </div>
+          </div>
+          <div class="ds-typo-sample ds-swatch">
+            <div class="ds-typo-sample-preview">
+              <p class="ds-typo-sample-caption">Blockquote · <code>.o-blockquote</code></p>
+              <blockquote class="o-blockquote" style="margin: 0">
+                Das hier ist ein Hinweis. Für kurze, prägnante Infos und am besten nicht länger als
+                zwei Sätze.
+              </blockquote>
+            </div>
+            <div class="ds-swatch_meta">
+              .o-blockquote
+              <code
+                >Geist · 400 · 1.6rem (≈16px) / lh 2.4rem (≈24px) · Border-left 0.2rem
+                --blue-digital · Padding-left 1.6rem</code
+              >
+            </div>
+          </div>
+          <div class="ds-typo-sample ds-swatch">
+            <div class="ds-typo-sample-preview">
+              <p class="ds-typo-sample-caption">Inline-Link · <code>.o-link</code></p>
+              <p class="ds-typo-body-sample" style="margin: 0">
+                Beispiel: Im Rahmen der <a class="o-link" href="#sec-type">Dresdner
+                Stahlbaufachtagung</a> hält Thomas Lechner einen Fachvortrag. Hover: nur
+                Unterstreichung, keine Farbänderung.
+              </p>
+            </div>
+            <div class="ds-swatch_meta">
+              .o-link
+              <code
+                >Geist · 500 · Farbe --link-color (--blue-digital) · Hover: Underline ohne
+                Farbwechsel · Underline-Offset 0.2em</code
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="ds-section o-container" aria-labelledby="sec-space">
+        <h2 id="sec-space" class="ds-section-title">Abstände &amp; Layout</h2>
+        <p class="ds-muted">
+          Container max. <code>144rem</code> (≈1440px bei 1&nbsp;rem ≈ 10&nbsp;px). Horizontales Padding:
+          <code>--container-padding</code> = 2.4rem (≈24px), ab 1024px 6.4rem (≈64px). Sektionsabstände:
+          <code>--component-space-top</code> 3.2rem (≈32px) / ab 1024px 6rem (≈60px),
+          <code>--component-space-bottom</code> 6.4rem (≈64px) / ab 1024px 12rem (≈120px). Bezug:
+          Root-<code>rem</code> wie unter Typografie.
+        </p>
+        <p class="o-footnote" style="margin-top: var(--spacer-24); margin-bottom: var(--spacer-8)">
+          Vollständige Skala
+        </p>
+        <div class="ds-spacing-demo">
+          <div class="ds-spacing-item ds-spacing-item--xs">
+            <div class="ds-spacing-bar" style="width: var(--spacer-4); height: var(--spacer-4)"></div>
+            <span><code>--spacer-4</code> · 0.4rem (≈4px)</span>
+          </div>
+          <div class="ds-spacing-item">
+            <div class="ds-spacing-bar" style="width: var(--spacer-8); height: var(--spacer-8)"></div>
+            <span><code>--spacer-8</code> · 0.8rem (≈8px)</span>
+          </div>
+          <div class="ds-spacing-item">
+            <div class="ds-spacing-bar" style="width: var(--spacer-16); height: var(--spacer-16)"></div>
+            <span><code>--spacer-16</code> · 1.6rem (≈16px)</span>
+          </div>
+          <div class="ds-spacing-item">
+            <div class="ds-spacing-bar" style="width: var(--spacer-24); height: var(--spacer-24)"></div>
+            <span><code>--spacer-24</code> · 2.4rem (≈24px)</span>
+          </div>
+          <div class="ds-spacing-item">
+            <div class="ds-spacing-bar" style="width: var(--spacer-32); height: var(--spacer-32)"></div>
+            <span><code>--spacer-32</code> · 3.2rem (≈32px)</span>
+          </div>
+          <div class="ds-spacing-item">
+            <div class="ds-spacing-bar" style="width: var(--spacer-48); height: var(--spacer-48)"></div>
+            <span><code>--spacer-48</code> · 4.8rem (≈48px)</span>
+          </div>
+          <div class="ds-spacing-item">
+            <div class="ds-spacing-bar" style="width: var(--spacer-100); height: var(--spacer-100)"></div>
+            <span><code>--spacer-100</code> · 10rem (≈100px)</span>
+          </div>
+        </div>
+
+        <p class="o-footnote" style="margin-top: var(--spacer-32); margin-bottom: var(--spacer-8)">
+          Sektions-Abstände (responsive)
+        </p>
+        <div class="ds-spacing-demo">
+          <div class="ds-spacing-item">
+            <div
+              class="ds-spacing-bar"
+              style="width: 8rem; height: var(--component-space-top)"
+            ></div>
+            <span><code>--component-space-top</code> · 3.2rem (≈32px), lg 6rem (≈60px)</span>
+          </div>
+          <div class="ds-spacing-item">
+            <div
+              class="ds-spacing-bar"
+              style="width: 8rem; height: var(--component-space-bottom)"
+            ></div>
+            <span><code>--component-space-bottom</code> · 6.4rem (≈64px), lg 12rem (≈120px)</span>
+          </div>
+        </div>
+        <div style="margin-top: var(--spacer-24)">
+          <p class="ds-section-title">Zweispaltig (.ds-grid-2, nur Demo)</p>
+          <div class="ds-grid-2">
+            <div style="background: var(--orange-hell); border-radius: 0.8rem; padding: var(--spacer-24)">
+              <h3 class="o-h4">Spalte A</h3>
+              <p class="ds-muted" style="margin: 0">
+                Nutzung von <code>.o-container</code> + <code>.o-row</code> + <code>.o-col</code> auf
+                der Website; hier vereinfachtes Raster.
+              </p>
+            </div>
+            <div style="background: var(--blue-digital-hell); border-radius: 0.8rem; padding: var(--spacer-24)">
+              <h3 class="o-h4">Spalte B</h3>
+              <p class="ds-muted" style="margin: 0">
+                Gutter-Token: <code>--gutter: 1.6rem (≈16px)</code>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ds-section o-container" aria-labelledby="sec-states">
+        <h2 id="sec-states" class="ds-section-title">States</h2>
+        <p class="ds-color-intro">
+          Sichtbarer <strong>Focus-Ring</strong> auf allen interaktiven Elementen,
+          <strong>Disabled-Opacity</strong> als reduzierter Zustand und semantische
+          <strong>Error / Success / Info</strong>-Farben für Banner und Feedback. Tokens:
+          <code>--focus-ring-*</code>, <code>--state-disabled-opacity</code>,
+          <code>--color-error/success/info</code>.
+        </p>
+        <div class="ds-state-grid">
+          <div class="ds-state-card">
+            <p class="ds-state-card__label">Focus-Ring</p>
+            <p class="ds-muted" style="margin-bottom: var(--spacer-16); font-size: 1.3rem">
+              In dieses Feld klicken oder mit Tab fokussieren — Ring sichtbar.
+            </p>
+            <input
+              class="ds-focus-target"
+              type="text"
+              value="Fokussiere mich"
+              aria-label="Focus-Demo"
+            />
+            <p class="o-caption" style="margin-top: var(--spacer-16); margin-bottom: 0">
+              <code
+                >--focus-ring-color (--blue-digital) · --focus-ring-width 0.2rem ·
+                --focus-ring-offset 0.2rem</code
+              >
+            </p>
+          </div>
+          <div class="ds-state-card">
+            <p class="ds-state-card__label">Disabled</p>
+            <p class="ds-muted" style="margin-bottom: var(--spacer-16); font-size: 1.3rem">
+              Reduzierte Opacity, kein Pointer-Event.
+            </p>
+            <div class="ds-disabled-demo">
+              <a class="c-btn" href="#sec-states">
+                <span class="c-btn_inner">
+                  <span>Disabled Button</span>
+                </span>
+              </a>
+            </div>
+            <p class="o-caption" style="margin-top: var(--spacer-16); margin-bottom: 0">
+              <code>--state-disabled-opacity · 0.45</code>
+            </p>
+          </div>
+          <div class="ds-state-card">
+            <p class="ds-state-card__label">Semantische Farben</p>
+            <div style="display: flex; flex-direction: column; gap: var(--spacer-8)">
+              <div class="ds-state-banner ds-state-banner--error">
+                Fehler · Eingabe konnte nicht gespeichert werden.
+              </div>
+              <div class="ds-state-banner ds-state-banner--success">
+                Erfolg · Änderungen wurden gespeichert.
+              </div>
+              <div class="ds-state-banner ds-state-banner--info">
+                Info · Du arbeitest gerade an einer Vorschau.
+              </div>
+            </div>
+            <p class="o-caption" style="margin-top: var(--spacer-16); margin-bottom: 0">
+              <code>--color-error · --color-success · --color-info</code>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ds-section o-container" aria-labelledby="sec-uitokens">
+        <h2 id="sec-uitokens" class="ds-section-title">UI-Tokens</h2>
+        <p class="ds-color-intro">
+          Bausteine, die im Intranet überall vorkommen: <strong>Form-Inputs</strong>,
+          <strong>Tags / Badges</strong> und <strong>Avatare</strong>. Hier als Token-Demo — die
+          fertigen Komponenten (Karte, Modal, Header) werden in den folgenden Phasen darauf
+          aufgesetzt.
+        </p>
+
+        <h3 class="ds-section-title ds-comp-subtitle">Form-Inputs</h3>
+        <p class="ds-comp-note ds-muted">
+          Höhe <code>--input-height: 4rem</code>, Radius <code>--input-radius: 0.6rem</code>, Border
+          <code>--input-border-color</code> → fokussiert <code>--input-border-color-focus</code>.
+        </p>
+        <div class="ds-form-demo">
+          <div class="ds-field">
+            <label class="ds-field__label" for="demo-input-default">Name des Auftraggebers</label>
+            <input
+              class="ds-field__input"
+              id="demo-input-default"
+              type="text"
+              placeholder="Name der Baufirma"
+            />
+            <p class="ds-field__helper">Pflichtfeld · wird intern verwendet.</p>
+          </div>
+          <div class="ds-field">
+            <label class="ds-field__label" for="demo-input-error">E-Mail der Ansprechpartner:in</label>
+            <input
+              class="ds-field__input ds-field__input--error"
+              id="demo-input-error"
+              type="email"
+              value="maxmustermann"
+            />
+            <p class="ds-field__helper ds-field__helper--error">
+              Bitte eine gültige E-Mail-Adresse eingeben.
+            </p>
+          </div>
+          <div class="ds-field">
+            <label class="ds-field__label" for="demo-textarea">Kommentar</label>
+            <textarea
+              class="ds-field__input ds-field__textarea"
+              id="demo-textarea"
+              placeholder="Kommentar hinzufügen"
+            ></textarea>
+          </div>
+        </div>
+
+        <h3 class="ds-section-title ds-comp-subtitle" style="margin-top: var(--component-space-top)">
+          Tags &amp; Badges
+        </h3>
+        <p class="ds-comp-note ds-muted">
+          Schlanke Marker für Meta-Lines, Kategorien und Status. Padding <code>--tag-padding-x/y</code>,
+          Radius <code>--tag-radius</code>.
+        </p>
+        <div class="ds-tag-row">
+          <span class="ds-tag">Extern</span>
+          <span class="ds-tag ds-tag--neutral">Intern</span>
+          <span class="ds-tag ds-tag--success">Veröffentlicht</span>
+          <span class="ds-tag ds-tag--warning">Entwurf</span>
+        </div>
+
+        <h3 class="ds-section-title ds-comp-subtitle" style="margin-top: var(--component-space-top)">
+          Avatare
+        </h3>
+        <p class="ds-comp-note ds-muted">
+          Drei Größen: Small (Comment-Notice), Medium (Karten), Large (Author-Box). Form rund über
+          <code>--avatar-radius: 50%</code>.
+        </p>
+        <div class="ds-avatar-row">
+          <div class="ds-avatar-item">
+            <span class="ds-avatar ds-avatar--sm" aria-label="Avatar Small"></span>
+            <span class="ds-avatar-item__label">SM · 24 px</span>
+          </div>
+          <div class="ds-avatar-item">
+            <span class="ds-avatar ds-avatar--md" aria-label="Avatar Medium"></span>
+            <span class="ds-avatar-item__label">MD · 40 px</span>
+          </div>
+          <div class="ds-avatar-item">
+            <span class="ds-avatar ds-avatar--lg" aria-label="Avatar Large"></span>
+            <span class="ds-avatar-item__label">LG · 64 px</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="ds-section o-container" aria-labelledby="sec-buttons">
+        <h2 id="sec-buttons" class="ds-section-title">Buttons</h2>
+        <p class="ds-muted">
+          Primärer Link-Button (<code>.c-btn</code>), wie auf der Startseite. Schriftgröße
+          <code>1.6rem</code> (≈16px). Beim Hover: Füllung und Rand mit <code>--accent-lime</code>.
+        </p>
+        <div style="margin-top: var(--spacer-24)">
+          <a class="c-btn" href="#sec-buttons">
+            <span class="c-btn_inner">
+              <span>Unsere Projekte</span>
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" aria-hidden="true">
+                <path
+                  d="M2 0.5L7 6.19281L7 7.80719L2 13.5L2 11.1634L5.65546 7L2 2.8366L2 0.5Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
+        <div class="ds-dark-panel">
+          <p class="ds-muted" style="color: #ffffffbf; margin-bottom: var(--spacer-16)">
+            Variante auf <code style="color: #ffffffd9">--blue-digital</code> (.c-btn.-white):
+          </p>
+          <a class="c-btn -white" href="#sec-buttons">
+            <span class="c-btn_inner">
+              <span>Kontakt</span>
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" aria-hidden="true">
+                <path
+                  d="M2 0.5L7 6.19281L7 7.80719L2 13.5L2 11.1634L5.65546 7L2 2.8366L2 0.5Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <section class="ds-section o-container" aria-labelledby="sec-o-layout">
+        <h2 id="sec-o-layout" class="ds-section-title">Object-Layout (.o-row / .o-col)</h2>
+        <p class="ds-muted">
+          Zeile und Spalten entsprechen dem Theme; die Seitenbreite kommt vom umgebenden
+          <code>.o-container</code> (wie alle Sektionen hier).
+        </p>
+        <div
+          style="
+            background: var(--light);
+            border-radius: 0.8rem;
+            margin-top: var(--spacer-24);
+            padding: var(--spacer-24);
+          "
+        >
+          <div class="o-row">
+            <div class="o-col">
+              <div style="background: var(--white); padding: var(--spacer-24); border-radius: 0.6rem">
+                <h4 class="o-h4">.o-col</h4>
+                <p class="ds-muted" style="margin: 0">Flex-Spalte wächst anteilig.</p>
+              </div>
+            </div>
+            <div class="o-col">
+              <div style="background: var(--white); padding: var(--spacer-24); border-radius: 0.6rem">
+                <h4 class="o-h4">.o-col</h4>
+                <p class="ds-muted" style="margin: 0">Zweite Spalte in <code>.o-row</code>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </body>
+</html>
