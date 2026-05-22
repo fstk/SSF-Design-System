@@ -45,7 +45,6 @@ Schriften liegen unter `assets/font/` und werden über `@font-face` in `ssf-toke
 - **States** – Focus-Ring, Disabled, semantische Banner (Error / Success / Info)
 - **UI-Tokens** – Form-Inputs, Tags / Badges, Avatare
 - **Buttons** – primärer Link-Button (`.c-btn`)
-- **Layout** – Object-Layout (`.o-row` / `.o-col`)
 
 Lokal öffnen oder als GitHub Page bereitstellen.
 
@@ -72,7 +71,7 @@ Lokal öffnen oder als GitHub Page bereitstellen.
 
 | Präfix | Zweck | Beispiel |
 |--------|-------|----------|
-| `.o-*` | **Object** – wiederverwendbare Typografie- / Layout-Bausteine | `.o-h1`, `.o-body-small`, `.o-link`, `.o-row`, `.o-container` |
+| `.o-*` | **Object** – wiederverwendbare Typografie- / Layout-Bausteine | `.o-h1`, `.o-body-small`, `.o-link`, `.o-container` |
 | `.c-*` | **Component** – konkrete UI-Komponente | `.c-btn` |
 | `.ds-*` | **Doku-Hilfsklassen** – ausschließlich im Foundation-HTML verwendet | `.ds-section`, `.ds-swatch`, `.ds-state-card` |
 | `.card-title-h5` | Karten-Titel (eigene Größe, kein semantisches H5) | `.card-title-h5` |

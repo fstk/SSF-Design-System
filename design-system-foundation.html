@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SSF Home · Design System Foundation</title>
-    <link rel="icon" href="assets/logo/ssf-logo.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="ssf-tokens.css" />
     <link rel="stylesheet" href="ssf-foundation.css" />
   </head>
@@ -36,7 +36,6 @@
         <a class="ds-onpage-nav__link" href="#sec-states">States</a>
         <a class="ds-onpage-nav__link" href="#sec-uitokens">UI-Tokens</a>
         <a class="ds-onpage-nav__link" href="#sec-buttons">Buttons</a>
-        <a class="ds-onpage-nav__link" href="#sec-o-layout">Layout</a>
       </div>
     </nav>
 
@@ -47,7 +46,7 @@
           Das Logo liegt im Repo als
           <code>assets/logo/ssf-logo.svg</code> (relativer Pfad zu dieser HTML-Datei), Füllfarbe
           <code>--blue-classic</code> (#00a2ef). <strong>SVG</strong> für Git, GitHub und GitHub
-          Pages; Favicon der Seite nutzt dieselbe Datei.
+          Pages. Favicon separat unter <code>assets/favicon.svg</code>.
         </p>
         <p class="ds-color-intro" style="margin-top: calc(var(--spacer-16) * -1)">
           <strong>Schutzzone:</strong> umlaufend <strong>eine Modulhöhe</strong> – das ist die
@@ -552,8 +551,7 @@
             <div style="background: var(--orange-hell); border-radius: 0.8rem; padding: var(--spacer-24)">
               <h3 class="o-h4">Spalte A</h3>
               <p class="ds-muted" style="margin: 0">
-                Nutzung von <code>.o-container</code> + <code>.o-row</code> + <code>.o-col</code> auf
-                der Website; hier vereinfachtes Raster.
+                Vereinfachtes Raster auf Basis von <code>.o-container</code> + Gutter-Token.
               </p>
             </div>
             <div style="background: var(--blue-digital-hell); border-radius: 0.8rem; padding: var(--spacer-24)">
@@ -748,37 +746,6 @@
               </svg>
             </span>
           </a>
-        </div>
-      </section>
-
-      <section class="ds-section o-container" aria-labelledby="sec-o-layout">
-        <h2 id="sec-o-layout" class="ds-section-title">Object-Layout (.o-row / .o-col)</h2>
-        <p class="ds-muted">
-          Zeile und Spalten entsprechen dem Theme; die Seitenbreite kommt vom umgebenden
-          <code>.o-container</code> (wie alle Sektionen hier).
-        </p>
-        <div
-          style="
-            background: var(--light);
-            border-radius: 0.8rem;
-            margin-top: var(--spacer-24);
-            padding: var(--spacer-24);
-          "
-        >
-          <div class="o-row">
-            <div class="o-col">
-              <div style="background: var(--white); padding: var(--spacer-24); border-radius: 0.6rem">
-                <h4 class="o-h4">.o-col</h4>
-                <p class="ds-muted" style="margin: 0">Flex-Spalte wächst anteilig.</p>
-              </div>
-            </div>
-            <div class="o-col">
-              <div style="background: var(--white); padding: var(--spacer-24); border-radius: 0.6rem">
-                <h4 class="o-h4">.o-col</h4>
-                <p class="ds-muted" style="margin: 0">Zweite Spalte in <code>.o-row</code>.</p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
